@@ -4,85 +4,138 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adnan's Portfolio</title>
- 
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f9fbfc;
-    color: #222;
-    padding: 2rem;
-    text-align: center;
-  }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-  h1 {
-    font-size: 2.5rem;
-    color: #0a66c2;
-  }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #0a3c6b;
-  }
+    h1, h2 {
+      font-family: 'Inter', sans-serif;
+      color: #1d3557;
+    }
 
-  a {
-    color: #0a66c2;
-    text-decoration: none;
-    font-weight: 600;
-  }
+    h1 {
+      font-size: 3rem;
+      margin-top: 2rem;
+      color: #3a9ad9;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-  a:hover {
-    text-decoration: underline;
-  }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #3a9ad9;
+    }
 
-  .box {
-    background: #ffffff;
-    padding: 2rem;
-    margin: 1.5rem auto;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 500px;
-  }
+    a {
+      color: #1d3557;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
 
-  ul {
-    padding-left: 0;
-    list-style: none;
-  }
+    a:hover {
+      color: #3a9ad9;
+      text-decoration: underline;
+    }
 
-  li {
-    padding: 0.4rem 0;
-  }
-</style>
+    .box {
+      background: #ffffff;
+      padding: 2.5rem;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      transition: all 0.3s ease;
+    }
 
- 
+    .box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      padding: 0.8rem 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    li::before {
+      content: "• ";
+      color: #3a9ad9;
+      font-weight: bold;
+    }
+
+    .profile-img {
+      border-radius: 50%;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 1.5rem;
+    }
+
+    footer {
+      background-color: #3a9ad9;
+      color: white;
+      padding: 1rem;
+      font-size: 1rem;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      font-weight: bold;
+    }
+
+  </style>
 </head>
 <body>
-  <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan's profile picture" width="150" style="border-radius: 50%; box-shadow: 0 4px 8px rgba(0,0,0,0.2); margin-bottom: 1rem;" />
-<h1>Hey, I'm Adnan 👋</h1>
-<p>A student learning Python and building cool stuff on GitHub 💻</p>
+
+  <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan's profile picture" width="150" class="profile-img" />
+  <h1>Hey, I'm Adnan 👋</h1>
+  <p>A student learning Python and building cool stuff on GitHub 💻</p>
 
   <div class="box">
     <h2>🛠️ Projects</h2>
-   <div style="text-align: left; max-width: 400px; margin: 0 auto;">
-  <p><strong><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></strong><br>
-  A beginner repo with simple Python projects like number guessing, BMI calculator, and more.</p>
-</div>
-
+    <p><strong><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></strong><br>
+    A beginner repo with simple Python projects like number guessing, BMI calculator, and more.</p>
   </div>
 
   <div class="box">
-  <h2>🧠 Skills</h2>
-  <ul style="list-style: none; padding: 0;">
-    <li>🐍 Python (Beginner)</li>
-    <li>🌐 HTML & CSS (Learning)</li>
-    <li>🗃️ Git & GitHub (Getting confident!)</li>
-    <li>🚀 Curious & Self-Motivated</li>
-  </ul>
-</div>
+    <h2>🧠 Skills</h2>
+    <ul>
+      <li>🐍 Python (Beginner)</li>
+      <li>🌐 HTML & CSS (Learning)</li>
+      <li>🗃️ Git & GitHub (Getting confident!)</li>
+      <li>🚀 Curious & Self-Motivated</li>
+    </ul>
+  </div>
 
+  <p>🚀 Portfolio under progress... stay tuned!</p>
 
-  <p style="margin-top: 3rem;">🚀 Portfolio under progress... stay tuned!</p>
+  <footer>
+    <p>Connect with me on <a href="https://github.com/ft-adnan" target="_blank">GitHub</a> | <a href="mailto:your-email@example.com">Email me</a></p>
+  </footer>
+
 </body>
 </html>
