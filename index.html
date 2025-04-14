@@ -2,172 +2,223 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adnan's Portfolio</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-  <!-- AOS Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      font-family: 'DM Sans', sans-serif;
+    :root {
+      --bg-light: #f0f4f8;
+      --bg-dark: #0d1117;
+      --text-light: #1d3557;
+      --text-dark: #c9d1d9;
+      --primary: #3a9ad9;
+      --secondary: #1d3557;
+      --box-bg-light: white;
+      --box-bg-dark: #161b22;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 999;
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
     }
 
-    .navbar a {
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .navbar a:hover {
-      color: #0077b6;
-    }
-
-    .hero {
-      padding: 6rem 2rem 4rem;
-      background: linear-gradient(135deg, #0077b6, #023e8a);
-      color: white;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem;
       text-align: center;
     }
 
-    .cta {
-      background: #FFD700;
-      color: #000;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
       font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1.5rem;
-      transition: 0.3s ease;
+      cursor: pointer;
+      transition: background 0.3s;
     }
 
-    .cta:hover {
-      background: #ffcd00;
-    }
-
-    .box {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
-      padding: 2.5rem;
-      margin: 3rem auto;
-      border-radius: 16px;
-      max-width: 800px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    li::before {
-      content: "• ";
-      color: #0077b6;
-      font-weight: bold;
+    .toggle-btn:hover {
+      background-color: var(--secondary);
     }
 
     .profile-img {
       border-radius: 50%;
-      width: 150px;
-      margin-top: 5rem;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      margin-top: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .hero p.typing {
+      font-size: 1.2rem;
+      color: inherit;
+      font-weight: 500;
+      height: 1.5rem;
+    }
+
+    .section {
+      background-color: var(--box-bg-light);
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: background 0.4s ease;
+    }
+
+    body.dark .section {
+      background-color: var(--box-bg-dark);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+    }
+
+    h2 {
+      color: var(--primary);
       margin-bottom: 1rem;
     }
 
-    footer {
-      background: #0077b6;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    footer a {
-      color: white;
+    a {
+      color: var(--primary);
+      text-decoration: none;
       font-weight: bold;
     }
 
-    @media screen and (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-      }
+    a:hover {
+      text-decoration: underline;
+    }
 
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 0.5rem 0;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 1rem;
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="#intro">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Theme</button>
 
-  <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan's profile picture" class="profile-img" />
+  <div class="container">
+    <div class="hero">
+      <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan" class="profile-img">
+      <h1>Welcome to My World of Code</h1>
+      <p class="typing" id="typing-text"></p>
+    </div>
 
-  <section id="intro" class="hero">
-    <h1>Hi, I'm Adnan</h1>
-    <p>Aspiring Software Engineer | Python Explorer</p>
-    <a href="#projects" class="cta">View My Work</a>
-  </section>
+    <div class="section" id="projects">
+      <h2>Projects</h2>
+      <p><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a><br>Beginner Python projects like number guess, BMI calculator, and more.</p>
+    </div>
 
-  <div class="box" id="projects" data-aos="fade-up">
-    <h2>🛠️ Projects</h2>
-    <p><strong><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></strong><br>
-    A beginner repo with simple Python projects like number guessing, BMI calculator, and more.</p>
-    <p><strong><a href="https://github.com/ft-adnan/new-project" target="_blank">New Project</a></strong><br>
-    A cool new project that does X, Y, and Z. Check it out!</p>
+    <div class="section" id="certificates">
+      <h2>Certificates</h2>
+      <ul>
+        <li>Python Basics – Coding Ninjas</li>
+        <li>Git & GitHub Essentials – Codecademy</li>
+        <li>Web Design Fundamentals – FreeCodeCamp</li>
+      </ul>
+    </div>
+
+    <div class="section" id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>🐍 Python</li>
+        <li>🌐 HTML & CSS</li>
+        <li>⚙️ Git & GitHub</li>
+        <li>🚀 Self-Motivated & Curious</li>
+      </ul>
+    </div>
+
+    <div class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Reach out at <a href="mailto:adnannoushad111@gmail.com">your-email@example.com</a></p>
+    </div>
+
+    <footer>
+      <p>Made with ❤️ by Adnan | <a href="https://github.com/ft-adnan" target="_blank">GitHub</a></p>
+    </footer>
   </div>
 
-  <div class="box" id="certificates" data-aos="fade-up">
-    <h2>📜 Certificates</h2>
-    <ul>
-      <li>Python Basics – [Platform Name]</li>
-      <li>Git & GitHub Essentials – [Platform Name]</li>
-      <li>Frontend Workshop – [Platform Name]</li>
-    </ul>
-  </div>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+    }
 
-  <div class="box" id="contact" data-aos="fade-up">
-    <h2>📬 Get in Touch</h2>
-    <p>Email me at <a href="mailto:adnannoushad111@gmail.com">your-email@example.com</a></p>
-  </div>
+    window.onload = () => {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark');
+      }
+      startTyping();
+    };
 
-  <footer>
-    <p>© 2025 Adnan | <a href="https://github.com/ft-adnan" target="_blank">GitHub</a></p>
-  </footer>
+    // Typing animation
+    const texts = ["Aspiring Software Engineer", "Python Enthusiast", "Web Developer in Progress"];
+    let i = 0, j = 0, currentText = '', isDeleting = false;
 
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+    function startTyping() {
+      const typingText = document.getElementById('typing-text');
+
+      if (i < texts.length) {
+        if (!isDeleting && j <= texts[i].length) {
+          currentText = texts[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          currentText = texts[i].substring(0, j--);
+        }
+
+        typingText.innerHTML = currentText;
+
+        if (j === texts[i].length) {
+          isDeleting = true;
+          setTimeout(startTyping, 1000);
+        } else if (j === 0) {
+          isDeleting = false;
+          i = (i + 1) % texts.length;
+          setTimeout(startTyping, 500);
+        } else {
+          setTimeout(startTyping, isDeleting ? 50 : 120);
+        }
+      }
+    }
+  </script>
 </body>
 </html>
