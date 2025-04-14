@@ -10,11 +10,12 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #3a9ad9, #1d3557); /* Blue gradient */
+      background: linear-gradient(135deg, #3a9ad9, #1d3557);
       color: #333;
       margin: 0;
       padding: 0;
       text-align: center;
+      transition: all 0.3s ease;
     }
 
     h1, h2 {
@@ -32,7 +33,7 @@
     h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: #3a9ad9; /* Blue color */
+      color: #3a9ad9;
     }
 
     a {
@@ -43,12 +44,12 @@
     }
 
     a:hover {
-      color: #3a9ad9; /* Blue hover color */
+      color: #3a9ad9;
       text-decoration: underline;
     }
 
     .intro {
-      background: linear-gradient(135deg, #3a9ad9, #1d3557); /* Blue gradient */
+      background: linear-gradient(135deg, #3a9ad9, #1d3557);
       padding: 3rem 2rem;
       border-radius: 12px;
       color: white;
@@ -100,7 +101,7 @@
 
     li::before {
       content: "• ";
-      color: #3a9ad9; /* Blue bullet */
+      color: #3a9ad9;
       font-weight: bold;
     }
 
@@ -117,7 +118,7 @@
     }
 
     footer {
-      background-color: #3a9ad9; /* Blue footer */
+      background-color: #3a9ad9;
       color: white;
       padding: 1rem;
       font-size: 1rem;
@@ -132,7 +133,21 @@
       font-weight: bold;
     }
 
-    /* Mobile Responsiveness */
+    #themeToggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: white;
+      color: #1d3557;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+
     @media screen and (max-width: 768px) {
       body {
         padding: 1rem;
@@ -165,12 +180,20 @@
 </head>
 <body>
 
+  <button id="themeToggle">🌙 Dark Mode</button>
+
   <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan's profile picture" width="150" class="profile-img" />
   
-  <!-- Intro Section -->
   <div class="intro">
     <h1>👨‍💻 Welcome to My World of Code!</h1>
     <p>I'm Adnan, a passionate Python learner and aspiring software engineer, currently building amazing projects on GitHub 💻</p>
+  </div>
+
+  <!-- About Me Section -->
+  <div class="box">
+    <h2>🙋‍♂️ About Me</h2>
+    <p>Hey! I'm Adnan, currently a high school student passionate about tech, Python, and building cool stuff 💡. I started my coding journey recently, and I'm loving every bit of it.</p>
+    <p>My dream is to become a software engineer and work on real-world projects that help people. When I'm not coding, I'm probably exploring new tech videos, reading about AI, or vibing with good music 🎧</p>
   </div>
 
   <!-- Projects Section -->
@@ -200,23 +223,49 @@
   <!-- Contact Section -->
   <div class="contact">
     <h2>📬 Get in Touch</h2>
-    <p>If you want to connect, feel free to reach out to me via <a href="mailto:adnannoushad111@gmail.com">email</a>!</p>
+    <p>If you want to connect, feel free to reach out to me via <a href="mailto:your-email@example.com">email</a>!</p>
   </div>
-
-  <!-- About Me Section -->
-<div class="box">
-  <h2>🙋‍♂️ About Me</h2>
-  <p>Hey! I'm Adnan, currently a high school student passionate about tech, Python, and building cool stuff 💡. I started my coding journey recently, and I'm loving every bit of it.</p>
-  <p>My dream is to become a software engineer and work on real-world projects that help people. When I'm not coding, I'm probably exploring new tech videos, reading about AI, or vibing with good music 🎧</p>
-</div>
-
 
   <p>🚀 Portfolio under progress... stay tuned!</p>
 
-  <!-- Footer Section -->
   <footer>
-    <p>Connect with me on <a href="https://github.com/ft-adnan" target="_blank">GitHub</a> | <a href="mailto:your-email@example.com">Email me</a></p>
+    <p>Connect with me on <a href="https://github.com/ft-adnan" target="_blank">GitHub</a> | <a href="mailto:adnannoushad111@gmail.com">Email me</a></p>
   </footer>
+
+  <!-- Toggle Theme Script -->
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    const body = document.body;
+    let darkMode = false;
+
+    toggleBtn.addEventListener('click', () => {
+      darkMode = !darkMode;
+
+      if (darkMode) {
+        body.style.background = '#121212';
+        body.style.color = '#f5f5f5';
+        toggleBtn.textContent = '☀️ Light Mode';
+        toggleBtn.style.backgroundColor = '#333';
+        toggleBtn.style.color = '#f5f5f5';
+        document.querySelectorAll('.box').forEach(box => {
+          box.style.background = '#1e1e1e';
+          box.style.color = '#f5f5f5';
+        });
+        document.querySelector('footer').style.backgroundColor = '#1e1e1e';
+      } else {
+        body.style.background = '';
+        body.style.color = '';
+        toggleBtn.textContent = '🌙 Dark Mode';
+        toggleBtn.style.backgroundColor = 'white';
+        toggleBtn.style.color = '#1d3557';
+        document.querySelectorAll('.box').forEach(box => {
+          box.style.background = '#ffffff';
+          box.style.color = '#333';
+        });
+        document.querySelector('footer').style.backgroundColor = '#3a9ad9';
+      }
+    });
+  </script>
 
 </body>
 </html>
