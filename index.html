@@ -163,6 +163,45 @@
         margin: 1rem;
       }
     }
+
+    .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.cert-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cert-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  color: #1d3557;
+}
+
+.cert-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+.cert-card a {
+  color: #3a9ad9;
+  font-weight: bold;
+  text-decoration: none;
+}
+
   </style>
 </head>
 <body>
@@ -210,6 +249,25 @@
       <li>🧠 Self-Motivated</li>
     </ul>
   </div>
+
+
+  <!-- Certificates Section -->
+<div class="box certificate-section" id="certificates">
+  <h2>🎓 Certificates</h2>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <h3>Python for Beginners</h3>
+      <p>Issued by Coursera · Mar 2025</p>
+      <a href="#" target="_blank">🔗 View Certificate</a>
+    </div>
+    <div class="cert-card">
+      <h3>Git & GitHub Essentials</h3>
+      <p>Issued by freeCodeCamp · Apr 2025</p>
+      <a href="#" target="_blank">🔗 View Certificate</a>
+    </div>
+    <!-- Add more certificates as needed -->
+  </div>
+</div>
 
   <!-- Contact -->
   <div class="section reveal">
