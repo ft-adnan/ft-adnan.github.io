@@ -202,6 +202,65 @@
   text-decoration: none;
 }
 
+    .filter-buttons {
+  margin: 1rem 0;
+}
+
+.filter-buttons button {
+  background: #e0ecf9;
+  color: #1d3557;
+  border: none;
+  padding: 0.6rem 1rem;
+  margin: 0.3rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button.active {
+  background: #3a9ad9;
+  color: white;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card {
+  background: #ffffff;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card h3 {
+  color: #1d3557;
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+.project-card a {
+  color: #3a9ad9;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+    
   </style>
 </head>
 <body>
@@ -224,20 +283,42 @@
     <p>Hi! I'm Adnan — a passionate Python learner and aspiring software engineer. I'm in 11th grade and already building cool stuff! 🔥</p>
   </div>
 
-  <!-- Projects -->
-  <div class="section reveal">
-    <h2>🛠️ Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></h3>
-        <p>Fun beginner projects like number guessing and BMI calculator.</p>
-      </div>
-      <div class="card">
-        <h3><a href="https://github.com/ft-adnan/new-project" target="_blank">New Project</a></h3>
-        <p>A cool new experiment in progress. Stay tuned!</p>
-      </div>
-    </div>
+ <!-- Projects Section with Filters -->
+<div class="box" id="projects">
+  <h2>🛠️ My Projects</h2>
+
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button onclick="filterProjects('all')" class="active">All</button>
+    <button onclick="filterProjects('python')">Python</button>
+    <button onclick="filterProjects('web')">Web</button>
+    <!-- Add more filters as needed -->
   </div>
+
+  <!-- Project Cards -->
+  <div class="project-grid">
+    <div class="project-card python">
+      <h3>Number Guessing Game</h3>
+      <p>Guess the number in Python using random & loops.</p>
+      <a href="https://github.com/ft-adnan/python-journey" target="_blank">🔗 View</a>
+    </div>
+
+    <div class="project-card python">
+      <h3>BMI Calculator</h3>
+      <p>Simple Python BMI calculator with inputs & logic.</p>
+      <a href="https://github.com/ft-adnan/python-journey" target="_blank">🔗 View</a>
+    </div>
+
+    <div class="project-card web">
+      <h3>Portfolio Website</h3>
+      <p>HTML/CSS based rich and responsive portfolio site.</p>
+      <a href="https://github.com/ft-adnan" target="_blank">🔗 View</a>
+    </div>
+
+    <!-- Add more project cards with class "python", "web", etc -->
+  </div>
+</div>
+
 
   <!-- Skills -->
   <div class="section reveal">
@@ -334,6 +415,24 @@
       scrollProgress.style.width = scrolled + "%";
     };
   </script>
+<script>
+  function filterProjects(type) {
+    const cards = document.querySelectorAll('.project-card');
+    const buttons = document.querySelectorAll('.filter-buttons button');
 
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    cards.forEach(card => {
+      if (type === 'all' || card.classList.contains(type)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+  
 </body>
 </html>
