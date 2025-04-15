@@ -4,221 +4,260 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adnan's Portfolio</title>
+
+  <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-light: #f0f4f8;
-      --bg-dark: #0d1117;
-      --text-light: #1d3557;
-      --text-dark: #c9d1d9;
-      --primary: #3a9ad9;
-      --secondary: #1d3557;
-      --box-bg-light: white;
-      --box-bg-dark: #161b22;
+      --primary-color: #1d3557;
+      --accent-color: #3a9ad9;
+      --bg-light: #ffffff;
+      --bg-dark: #121212;
+      --text-light: #ffffff;
+      --text-dark: #333333;
     }
 
-    html {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
-    body {
+    html, body {
       font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
       background-color: var(--bg-light);
-      color: var(--text-light);
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    body.dark {
-      background-color: var(--bg-dark);
       color: var(--text-dark);
+      transition: background 0.4s, color 0.4s;
     }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    /* Scroll progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background-color: var(--accent-color);
+      width: 0%;
+      z-index: 9999;
+    }
+
+    /* Navbar */
+    nav {
+      background: var(--primary-color);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
     }
 
     .toggle-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      background-color: var(--primary);
+      cursor: pointer;
+      background: var(--accent-color);
+      border: none;
       color: white;
       padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
+      border-radius: 5px;
     }
 
-    .toggle-btn:hover {
-      background-color: var(--secondary);
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
     }
 
     .profile-img {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      margin-top: 2rem;
+      margin: 2rem auto 1rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      display: block;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin: 1rem 0 0.5rem;
-    }
-
-    .hero p.typing {
-      font-size: 1.2rem;
-      color: inherit;
-      font-weight: 500;
-      height: 1.5rem;
-    }
-
-    .section {
-      background-color: var(--box-bg-light);
-      margin: 2rem 0;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transition: background 0.4s ease;
-    }
-
-    body.dark .section {
-      background-color: var(--box-bg-dark);
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-    }
-
-    h2 {
-      color: var(--primary);
+    h1 {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: bold;
+    .typing::after {
+      content: "|";
+      animation: blink 0.8s infinite;
     }
 
-    a:hover {
-      text-decoration: underline;
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    section {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: #f0f4f8;
+      border-radius: 12px;
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    body.dark-mode section {
+      background: #1e1e1e;
+    }
+
+    section.reveal {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     ul {
       list-style: none;
       padding: 0;
+      font-size: 1.1rem;
     }
 
-    li {
-      padding: 0.5rem 0;
+    li::before {
+      content: "✔️ ";
+      color: var(--accent-color);
     }
 
     footer {
-      margin-top: 4rem;
-      padding: 1rem;
-      background-color: var(--primary);
+      background: var(--primary-color);
       color: white;
+      padding: 1rem;
+      text-align: center;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
+    footer a {
+      color: var(--accent-color);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleDarkMode()">Toggle Theme</button>
+
+  <div id="progress-bar"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <div><strong>Adnan</strong></div>
+    <div>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle</button>
+  </nav>
+
+  <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Profile Picture" class="profile-img" />
 
   <div class="container">
-    <div class="hero">
-      <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan" class="profile-img">
-      <h1>Welcome to My World of Code</h1>
-      <p class="typing" id="typing-text"></p>
-    </div>
+    <h1 class="typing" id="typing"></h1>
 
-    <div class="section" id="projects">
-      <h2>Projects</h2>
-      <p><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a><br>Beginner Python projects like number guess, BMI calculator, and more.</p>
-    </div>
+    <section id="projects">
+      <h2>🛠️ Projects</h2>
+      <p><strong><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></strong><br>
+      Beginner Python projects like number guessing, BMI calculator, and more.</p>
+    </section>
 
-    <div class="section" id="certificates">
-      <h2>Certificates</h2>
+    <section id="skills">
+      <h2>🧠 Skills</h2>
       <ul>
-        <li>Python Basics – Coding Ninjas</li>
-        <li>Git & GitHub Essentials – Codecademy</li>
-        <li>Web Design Fundamentals – FreeCodeCamp</li>
+        <li>Python (Beginner)</li>
+        <li>HTML & CSS (Learning)</li>
+        <li>Git & GitHub (Getting confident!)</li>
+        <li>Curious & Self-Motivated</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="section" id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>🐍 Python</li>
-        <li>🌐 HTML & CSS</li>
-        <li>⚙️ Git & GitHub</li>
-        <li>🚀 Self-Motivated & Curious</li>
-      </ul>
-    </div>
+    <section id="certificates">
+      <h2>📜 Certificates</h2>
+      <p>Coming soon! Working on some amazing ones to showcase here 👨‍🎓</p>
+    </section>
 
-    <div class="section" id="contact">
-      <h2>Contact</h2>
-      <p>Reach out at <a href="mailto:adnannoushad111@gmail.com">adnannoushad111@gmail.com</a></p>
-    </div>
+    <section id="contact">
+      <h2>📬 Contact Me</h2>
+      <p>Feel free to reach out via <a href="mailto:adnannoushad111@gmail.com">email</a> or follow me on <a href="https://github.com/ft-adnan" target="_blank">GitHub</a></p>
+    </section>
 
-    <footer>
-      <p>Made with ❤️ by Adnan | <a href="https://github.com/ft-adnan" target="_blank">GitHub</a></p>
-    </footer>
+    <p>🚀 Portfolio in progress... more updates coming soon!</p>
   </div>
 
+  <footer>
+    Made with 💖 by Adnan | <a href="https://github.com/ft-adnan">GitHub</a>
+  </footer>
+
+  <!-- JavaScript -->
   <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+    // Typing effect
+    const text = "Welcome to My World of Code!";
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, 80);
+      }
     }
+    type();
 
-    window.onload = () => {
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark');
-      }
-      startTyping();
-    };
-
-    // Typing animation
-    const texts = ["Aspiring Software Engineer", "Python Enthusiast", "Web Developer in Progress"];
-    let i = 0, j = 0, currentText = '', isDeleting = false;
-
-    function startTyping() {
-      const typingText = document.getElementById('typing-text');
-
-      if (i < texts.length) {
-        if (!isDeleting && j <= texts[i].length) {
-          currentText = texts[i].substring(0, j++);
-        } else if (isDeleting && j >= 0) {
-          currentText = texts[i].substring(0, j--);
+    // Scroll reveal
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+      const triggerBottom = window.innerHeight / 1.1;
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          section.classList.add("reveal");
         }
+      });
 
-        typingText.innerHTML = currentText;
+      // Progress bar
+      let scrollTop = window.scrollY;
+      let docHeight = document.body.scrollHeight - window.innerHeight;
+      let scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById("progress-bar").style.width = scrollPercent + "%";
+    });
 
-        if (j === texts[i].length) {
-          isDeleting = true;
-          setTimeout(startTyping, 1000);
-        } else if (j === 0) {
-          isDeleting = false;
-          i = (i + 1) % texts.length;
-          setTimeout(startTyping, 500);
-        } else {
-          setTimeout(startTyping, isDeleting ? 50 : 120);
-        }
-      }
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
     }
   </script>
+
 </body>
 </html>
