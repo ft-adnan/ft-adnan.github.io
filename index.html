@@ -4,259 +4,277 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adnan's Portfolio</title>
-
-  <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary-color: #1d3557;
-      --accent-color: #3a9ad9;
-      --bg-light: #ffffff;
-      --bg-dark: #121212;
-      --text-light: #ffffff;
-      --text-dark: #333333;
+      --bg1: #3a9ad9;
+      --bg2: #1d3557;
+      --text: #333;
+      --accent: #3a9ad9;
+      --light: #ffffff;
+      --dark: #111827;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    html {
       scroll-behavior: smooth;
     }
 
-    html, body {
+    body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      transition: background 0.4s, color 0.4s;
+      margin: 0;
+      padding: 0;
+      color: var(--text);
+      background: linear-gradient(270deg, var(--bg1), var(--bg2));
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      transition: background 0.3s ease;
     }
 
-    body.dark-mode {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
-    /* Scroll progress bar */
-    #progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 5px;
-      background-color: var(--accent-color);
-      width: 0%;
-      z-index: 9999;
-    }
-
-    /* Navbar */
-    nav {
-      background: var(--primary-color);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-    }
-
-    nav a {
-      margin: 0 1rem;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    .toggle-btn {
-      cursor: pointer;
-      background: var(--accent-color);
-      border: none;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-    }
-
-    .container {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
+    header {
+      padding: 2rem 1rem;
       text-align: center;
     }
 
     .profile-img {
       width: 150px;
-      height: 150px;
       border-radius: 50%;
-      margin: 2rem auto 1rem;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      display: block;
-    }
-
-    h1 {
-      font-size: 2.5rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       margin-bottom: 1rem;
     }
 
-    .typing::after {
-      content: "|";
-      animation: blink 0.8s infinite;
+    .typing-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      margin: 1rem 0;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    section {
-      margin: 3rem 0;
-      padding: 2rem;
-      background: #f0f4f8;
+    .section {
+      background: white;
       border-radius: 12px;
-      transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(50px);
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
 
-    body.dark-mode section {
-      background: #1e1e1e;
+    .section:hover {
+      transform: translateY(-5px);
     }
 
-    section.reveal {
-      opacity: 1;
-      transform: translateY(0);
+    h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
     }
 
     ul {
       list-style: none;
       padding: 0;
-      font-size: 1.1rem;
-    }
-
-    li::before {
-      content: "✔️ ";
-      color: var(--accent-color);
+      line-height: 1.8;
     }
 
     footer {
-      background: var(--primary-color);
-      color: white;
-      padding: 1rem;
       text-align: center;
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      font-size: 1rem;
     }
 
-    footer a {
-      color: var(--accent-color);
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 1000;
     }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
+    .dark-mode {
+      background: #111827;
+      color: white;
     }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+
+    .dark-mode .section {
+      background: #1f2937;
+      color: white;
     }
-    ::-webkit-scrollbar-thumb {
-      background: var(--accent-color);
-      border-radius: 10px;
+
+    .dark-mode .card {
+      background: #374151;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: white;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .typing-text {
+        font-size: 1.5rem;
+      }
+
+      .section {
+        margin: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="progress-bar"></div>
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- Navbar -->
-  <nav>
-    <div><strong>Adnan</strong></div>
-    <div>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#certificates">Certificates</a>
-      <a href="#contact">Contact</a>
+  <!-- Dark Mode Toggle -->
+  <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+  <!-- Header -->
+  <header>
+    <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Adnan's profile picture" class="profile-img" />
+    <div class="typing-text" id="typing"></div>
+  </header>
+
+  <!-- About -->
+  <div class="section reveal">
+    <h2>👋 About Me</h2>
+    <p>Hi! I'm Adnan — a passionate Python learner and aspiring software engineer. I'm in 11th grade and already building cool stuff! 🔥</p>
+  </div>
+
+  <!-- Projects -->
+  <div class="section reveal">
+    <h2>🛠️ Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></h3>
+        <p>Fun beginner projects like number guessing and BMI calculator.</p>
+      </div>
+      <div class="card">
+        <h3><a href="https://github.com/ft-adnan/new-project" target="_blank">New Project</a></h3>
+        <p>A cool new experiment in progress. Stay tuned!</p>
+      </div>
     </div>
-    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Toggle</button>
-  </nav>
+  </div>
 
-  <img src="https://avatars.githubusercontent.com/ft-adnan" alt="Profile Picture" class="profile-img" />
+  <!-- Skills -->
+  <div class="section reveal">
+    <h2>🧠 Skills</h2>
+    <ul>
+      <li>🐍 Python (Beginner)</li>
+      <li>🌐 HTML & CSS (Learning)</li>
+      <li>📁 Git & GitHub</li>
+      <li>🧠 Self-Motivated</li>
+    </ul>
+  </div>
 
-  <div class="container">
-    <h1 class="typing" id="typing"></h1>
-
-    <section id="projects">
-      <h2>🛠️ Projects</h2>
-      <p><strong><a href="https://github.com/ft-adnan/python-journey" target="_blank">Python Journey</a></strong><br>
-      Beginner Python projects like number guessing, BMI calculator, and more.</p>
-    </section>
-
-    <section id="skills">
-      <h2>🧠 Skills</h2>
-      <ul>
-        <li>Python (Beginner)</li>
-        <li>HTML & CSS (Learning)</li>
-        <li>Git & GitHub (Getting confident!)</li>
-        <li>Curious & Self-Motivated</li>
-      </ul>
-    </section>
-
-    <section id="certificates">
-      <h2>📜 Certificates</h2>
-      <p>Coming soon! Working on some amazing ones to showcase here 👨‍🎓</p>
-    </section>
-
-    <section id="contact">
-      <h2>📬 Contact Me</h2>
-      <p>Feel free to reach out via <a href="mailto:adnannoushad111@gmail.com">email</a> or follow me on <a href="https://github.com/ft-adnan" target="_blank">GitHub</a></p>
-    </section>
-
-    <p>🚀 Portfolio in progress... more updates coming soon!</p>
+  <!-- Contact -->
+  <div class="section reveal">
+    <h2>📬 Contact</h2>
+    <p>Want to connect? <a href="mailto:your-adnannoushad111@gmail.com">Email me</a></p>
   </div>
 
   <footer>
-    Made with 💖 by Adnan | <a href="https://github.com/ft-adnan">GitHub</a>
+    Built with 💖 by Adnan | <a href="https://github.com/ft-adnan" target="_blank">GitHub</a>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
+  <script src="https://unpkg.com/scrollreveal"></script>
   <script>
-    // Typing effect
-    const text = "Welcome to My World of Code!";
-    let i = 0;
+    // Typing Animation
+    const typingText = ["Welcome to my world of code!", "Future Software Engineer 🚀", "Learning. Building. Growing."];
+    let i = 0, j = 0, currentText = '', isDeleting = false;
+
     function type() {
-      if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, 80);
+      if (i < typingText.length) {
+        if (!isDeleting && j <= typingText[i].length) {
+          currentText = typingText[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          currentText = typingText[i].substring(0, j--);
+        }
+
+        document.getElementById('typing').innerHTML = currentText;
+
+        if (!isDeleting && j === typingText[i].length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else if (isDeleting && j === 0) {
+          isDeleting = false;
+          i = (i + 1) % typingText.length;
+          setTimeout(type, 300);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+        }
       }
     }
+
     type();
 
-    // Scroll reveal
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      const triggerBottom = window.innerHeight / 1.1;
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < triggerBottom) {
-          section.classList.add("reveal");
-        }
-      });
-
-      // Progress bar
-      let scrollTop = window.scrollY;
-      let docHeight = document.body.scrollHeight - window.innerHeight;
-      let scrollPercent = (scrollTop / docHeight) * 100;
-      document.getElementById("progress-bar").style.width = scrollPercent + "%";
+    // ScrollReveal
+    ScrollReveal().reveal('.reveal', {
+      duration: 1000,
+      origin: 'bottom',
+      distance: '50px',
+      easing: 'ease-in-out',
+      reset: false
     });
 
-    // Dark mode toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
+    // Dark Mode
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
     }
+
+    // Scroll Progress
+    window.onscroll = () => {
+      const scrollProgress = document.getElementById("scrollProgress");
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      scrollProgress.style.width = scrolled + "%";
+    };
   </script>
 
 </body>
